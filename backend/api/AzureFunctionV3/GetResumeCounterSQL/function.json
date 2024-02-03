@@ -1,0 +1,38 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "direction": "in", 
+      "type": "cosmosDB",
+      "name": "inputCounter",           
+      "connection": "AzureResumeConnectionString",
+      "databaseName": "AzureResume",
+      "containerName": "Counter",
+      "sqlQuery": "select * from c where c.id = 1",
+      "partitionKey": "1"
+    },
+    {
+      "direction": "out",
+      "type": "cosmosDB",      
+      "name": "outputCounter",      
+      "connection": "AzureResumeConnectionString",
+      "databaseName": "AzureResume",
+      "containerName": "Counter",
+      "createIfNotExists": "false"
+    }
+  ]
+}
