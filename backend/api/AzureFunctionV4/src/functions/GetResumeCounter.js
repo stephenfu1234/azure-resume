@@ -35,7 +35,7 @@ app.http('GetResumeCounter', {
                 count: updatedCounter
             });
 
-            context.log("Updating CosmosDB");
+            context.log("Updating CosmosDB with updated counter");
             context.log(updatedCountJson);
             context.extraOutputs.set(cosmosOutput, updatedCountJson);
             context.log("CosmosDB Updated");
