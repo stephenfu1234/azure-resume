@@ -20,7 +20,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name sfuazureresumestorage --auth-mode key --overwrite --destination '$web' --source .
+            az storage blob upload-batch --account-name sfuazureresumestorage --auth-mode key --overwrite --destination '$web' --source frontend/
             
   # Azure logout
     - name: logout
