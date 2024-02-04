@@ -41,7 +41,7 @@ app.http('GetResumeCounter', {
             context.log("CosmosDB Updated");
 
             return {
-                body: `Found Counter ${inputCounter.count}, incrementing to ${updatedCounter}`,
+                body: updatedCountJson,
             };
         }
     },

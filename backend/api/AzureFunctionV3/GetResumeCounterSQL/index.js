@@ -4,7 +4,6 @@ module.exports = async function (context, req, inputCounter) {
 //not working
     context.log(inputCounter);
     const updatedCount = parseInt(inputCounter.count) + 1;    
-    const responseMessage = "Updated count to " + updatedCount;
 
     var updatedCountJson = JSON.stringify({
         id: inputCounter.id,
@@ -16,6 +15,6 @@ module.exports = async function (context, req, inputCounter) {
     context.log("Updated CosmosDB")
 
     context.res = {
-        body: responseMessage
+        body: updatedCountJson
     };
 }
