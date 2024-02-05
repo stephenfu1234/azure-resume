@@ -28,14 +28,9 @@ app.http('GetResumeCounter', {
                 body: 'Counter not found',
             };
         } else {
-            const updatedCounter = parseInt(inputCounter.count) + 1;
+            var updatedCountJson = incrementCounter(inputCounter);
 
-            var updatedCountJson = JSON.stringify({
-                id: inputCounter.id,
-                count: updatedCounter
-            });
-
-            context.log("Updating CosmosDB with updated counter");
+            context.log("Updating CosmosDB");
             context.log(updatedCountJson);
             context.extraOutputs.set(cosmosOutput, updatedCountJson);
             context.log("CosmosDB Updated");
@@ -46,3 +41,14 @@ app.http('GetResumeCounter', {
         }
     },
 });
+
+function incrementCounter(inputCounterJson) {
+    var updatedCountJson = JSON.stringify({
+        id: inputCounterJson.id,
+        count: parseInt(inputCounterJson.count) + 1
+    });
+
+    return updatedCountJson;
+};
+
+module.exports = incrementCounter;
